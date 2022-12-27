@@ -1,0 +1,24 @@
+{
+    "CinemaType" : [
+        {
+            "type": "FILM",
+            "description": "Фильмы"
+        },
+        {
+            "type": "TV_SHOW",
+            "description": "ТВ Шоу"
+        },
+        {
+            "type": "TV_SERIES",
+            "description": "ТВ Сериалы"
+        },
+        {
+            "type": "MINI_SERIES",
+            "description": "Мини Сериалы"
+        },
+        {
+            "type": "ALL",
+            "description": "Всё"
+        }
+    ]
+}

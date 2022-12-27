@@ -1,0 +1,16 @@
+{
+    "SortedType" : [
+        {
+            "type": "RATING",
+            "description": "По рейтингу"
+        },
+        {
+            "type": "NUM_VOTE",
+            "description": "По колличеству голосов"
+        },
+        {
+            "type": "YEAR",
+            "description": "По году выпуска"
+        }
+    ]
+}
