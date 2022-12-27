@@ -44,6 +44,8 @@
 		0D8EDAEB295B6B600092385A /* ProtocolsOfflineNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDAEA295B6B600092385A /* ProtocolsOfflineNetworkService.swift */; };
 		0D8EDAF0295B6DFB0092385A /* ChoiceTypeCinemaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDAEF295B6DFB0092385A /* ChoiceTypeCinemaViewController.swift */; };
 		0D8EDAF2295B6ECB0092385A /* ChoiceTypeCinemaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDAF1295B6ECB0092385A /* ChoiceTypeCinemaView.swift */; };
+		0D8EDAF6295B80070092385A /* CustomNaviHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDAF5295B80070092385A /* CustomNaviHeaderView.swift */; };
+		0D8EDAF8295B801B0092385A /* CustomNaviHeaderViewParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDAF7295B801B0092385A /* CustomNaviHeaderViewParameters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		0D8EDAEA295B6B600092385A /* ProtocolsOfflineNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolsOfflineNetworkService.swift; sourceTree = "<group>"; };
 		0D8EDAEF295B6DFB0092385A /* ChoiceTypeCinemaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceTypeCinemaViewController.swift; sourceTree = "<group>"; };
 		0D8EDAF1295B6ECB0092385A /* ChoiceTypeCinemaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceTypeCinemaView.swift; sourceTree = "<group>"; };
+		0D8EDAF5295B80070092385A /* CustomNaviHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNaviHeaderView.swift; sourceTree = "<group>"; };
+		0D8EDAF7295B801B0092385A /* CustomNaviHeaderViewParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNaviHeaderViewParameters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +244,8 @@
 		0D8EDA9F295B2CD60092385A /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				0D8EDAF9295B8B3D0092385A /* Enums */,
+				0D8EDAF3295B7F350092385A /* Views */,
 				0D8EDADD295B67220092385A /* Models */,
 			);
 			path = Entity;
@@ -474,6 +480,30 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		0D8EDAF3295B7F350092385A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0D8EDAF4295B7FAC0092385A /* CustomNaviHeaderView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0D8EDAF4295B7FAC0092385A /* CustomNaviHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				0D8EDAF7295B801B0092385A /* CustomNaviHeaderViewParameters.swift */,
+				0D8EDAF5295B80070092385A /* CustomNaviHeaderView.swift */,
+			);
+			path = CustomNaviHeaderView;
+			sourceTree = "<group>";
+		};
+		0D8EDAF9295B8B3D0092385A /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -616,6 +646,7 @@
 			files = (
 				0D8EDAF2295B6ECB0092385A /* ChoiceTypeCinemaView.swift in Sources */,
 				0D8EDA6E295B2C210092385A /* ChoiceOfEntertainment.xcdatamodeld in Sources */,
+				0D8EDAF6295B80070092385A /* CustomNaviHeaderView.swift in Sources */,
 				0D8EDAA8295B2DB20092385A /* ChoiceOfEntertainmentView.swift in Sources */,
 				0D8EDAEB295B6B600092385A /* ProtocolsOfflineNetworkService.swift in Sources */,
 				0D8EDAC2295B4B3C0092385A /* AppCoordinator.swift in Sources */,
@@ -626,6 +657,7 @@
 				0D8EDABB295B4A7A0092385A /* Presentable.swift in Sources */,
 				0D8EDADC295B65DF0092385A /* Data+Ext.swift in Sources */,
 				0D8EDAAC295B39F20092385A /* UIColor+Ext.swift in Sources */,
+				0D8EDAF8295B801B0092385A /* CustomNaviHeaderViewParameters.swift in Sources */,
 				0D8EDAC7295B4BA20092385A /* Router.swift in Sources */,
 				0D8EDAF0295B6DFB0092385A /* ChoiceTypeCinemaViewController.swift in Sources */,
 				0D8EDAAF295B3EF10092385A /* ChoiceOfEntertainmentParameters.swift in Sources */,

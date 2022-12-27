@@ -14,7 +14,7 @@ import Combine
 final class ChoiceTypeCinemaViewController: UIViewController {
 
     // MARK: Public properties
-//    var choiceTypeCinemaScreen: CompletionBlock?
+    var dismiss: CompletionBlock?
     
     // MARK: - Private properties
     private var bag = Set<AnyCancellable>()
@@ -39,15 +39,10 @@ private extension ChoiceTypeCinemaViewController {
     
     /// Binding
     func binding() {
-//        mainView.onTappedCinemaButton
-//            .sink { [weak self] _ in
-//                guard let self = self else { return }
-//                self.choiceTypeCinemaScreen?()
-//            }.store(in: &bag)
-//        mainView.onTappedBookButton
-//            .sink { [weak self] _ in
-//                guard let self = self else { return }
-//                self.choiceBookScreen?()
-//            }.store(in: &bag)
+        mainView.headerView.onTappedBackButton
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.dismiss?()
+            }.store(in: &bag)
     }
 }

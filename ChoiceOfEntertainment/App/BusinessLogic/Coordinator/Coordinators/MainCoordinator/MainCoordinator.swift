@@ -62,6 +62,10 @@ private extension MainCoordinator {
     
     func runChoiceTypeCinemaScreen() {
         let vc = factory.buildChoiceTypeCinemaScreen()
+        vc.dismiss = { [weak self] in
+            guard let self = self else { return }
+            self.popModule()
+        }
         router.push(vc, animated: true)
     }
     

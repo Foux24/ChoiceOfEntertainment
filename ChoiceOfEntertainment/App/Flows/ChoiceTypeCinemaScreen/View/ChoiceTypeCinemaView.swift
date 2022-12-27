@@ -15,7 +15,11 @@ final class ChoiceTypeCinemaView: UIView {
     // MARK: - Combine properties
     
     // MARK: - Private Properties
-
+    private(set) lazy var headerView: CustomNaviHeaderView = {
+        let view = CustomNaviHeaderView()
+        view.titleLabel.text = "1/5"
+        return view
+    }()
     
     // MARK: - Init
     /// - Parameter frame: frame
@@ -43,10 +47,14 @@ private extension ChoiceTypeCinemaView {
     
     /// Добавление UI на View
     func addUIInView() -> Void {
+        addSubview(headerView)
     }
     
     /// Установка констрейнтов
     func setupConstreints() -> Void {
+        headerView.snp.makeConstraints { make in
+            make.leading.top.trailing.equalToSuperview()
+        }
     }
     
     /// Добавление таргетов кнопкам
