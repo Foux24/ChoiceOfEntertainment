@@ -11,9 +11,9 @@ import Combine
 final class SelectingMovieQueryOptionViewController: UIViewController {
     
     // MARK: Public properties
-    var viewModel: SelectingMovieQueryOptionViewModel
     var dismiss: CompletionBlock?
-    
+    var viewModel: SelectingMovieQueryOptionViewModel
+
     // MARK: - Private properties
     private var bag = Set<AnyCancellable>()
     private var mainView: SelectingMovieQueryOptionView {
@@ -21,7 +21,6 @@ final class SelectingMovieQueryOptionViewController: UIViewController {
     }
     
     // MARK: Init
-    /// Инициализторы
     init(viewModel: SelectingMovieQueryOptionViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

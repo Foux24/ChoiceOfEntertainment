@@ -54,6 +54,7 @@
 		0D8EDB13295E4FBE0092385A /* ViewModelsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB12295E4FBE0092385A /* ViewModelsFactory.swift */; };
 		0D8EDB1529605CC10092385A /* EnumNameFilesJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB1429605CC10092385A /* EnumNameFilesJSON.swift */; };
 		0D8EDB1829606C7C0092385A /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB1729606C7C0092385A /* Date+Ext.swift */; };
+		0D8EDB1B29609C4B0092385A /* CinemaRequestGenerationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB1A29609C4B0092385A /* CinemaRequestGenerationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		0D8EDB12295E4FBE0092385A /* ViewModelsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelsFactory.swift; sourceTree = "<group>"; };
 		0D8EDB1429605CC10092385A /* EnumNameFilesJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumNameFilesJSON.swift; sourceTree = "<group>"; };
 		0D8EDB1729606C7C0092385A /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		0D8EDB1A29609C4B0092385A /* CinemaRequestGenerationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaRequestGenerationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -462,6 +464,7 @@
 		0D8EDAEC295B6DBB0092385A /* CinemaRequestGenerationScreen */ = {
 			isa = PBXGroup;
 			children = (
+				0D8EDB1929609C370092385A /* ViewModel */,
 				0D8EDAED295B6DD60092385A /* View */,
 				0D8EDAEF295B6DFB0092385A /* CinemaRequestGenerationViewController.swift */,
 			);
@@ -558,6 +561,14 @@
 				0D8EDB1729606C7C0092385A /* Date+Ext.swift */,
 			);
 			path = Date;
+			sourceTree = "<group>";
+		};
+		0D8EDB1929609C370092385A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0D8EDB1A29609C4B0092385A /* CinemaRequestGenerationViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -706,6 +717,7 @@
 				0D8EDAF6295B80070092385A /* CustomNaviHeaderView.swift in Sources */,
 				0D8EDAA8295B2DB20092385A /* ChoiceOfEntertainmentView.swift in Sources */,
 				0D8EDAC2295B4B3C0092385A /* AppCoordinator.swift in Sources */,
+				0D8EDB1B29609C4B0092385A /* CinemaRequestGenerationViewModel.swift in Sources */,
 				0D8EDAD0295B4D650092385A /* MainModulesFactory.swift in Sources */,
 				0D8EDAE8295B697F0092385A /* RequestParameterConstructor.swift in Sources */,
 				0D8EDAA6295B2D400092385A /* ChoiceOfEntertainmentViewController.swift in Sources */,

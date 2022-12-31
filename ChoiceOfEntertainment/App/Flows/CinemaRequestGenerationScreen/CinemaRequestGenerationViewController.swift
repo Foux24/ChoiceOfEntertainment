@@ -17,14 +17,25 @@ final class CinemaRequestGenerationViewController: UIViewController {
     var dismiss: CompletionBlock?
     var nextScreen: ((CinemaListRequestDataModel) -> ())?
     var openPickerViewController: ((Int, CinemaRequestGenerationViewController) -> ())?
+    
+    var viewModel: CinemaRequestGenerationViewModel
+    
     var mainView: CinemaRequestGenerationView {
         return self.view as! CinemaRequestGenerationView
     }
     
-    @Published var cinemaListDataModel = CinemaListRequestDataModel()
-    
     // MARK: - Private properties
     private var bag = Set<AnyCancellable>()
+    
+    // MARK: Init
+    init(viewModel: CinemaRequestGenerationViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - LifeCycle
     override func loadView() {
@@ -56,28 +67,13 @@ private extension CinemaRequestGenerationViewController {
         mainView.onTappedSearchButton
             .sink { [weak self] _ in
                 guard let self = self else { return }
-                self.nextScreen?(self.cinemaListDataModel)
+                self.nextScreen?(self.viewModel.cinemaListDataModel)
             }.store(in: &bag)
-        $cinemaListDataModel
-            .sink { [weak self] model in
+        viewModel.$cinemaListDataModel
+            .sink { [weak self] dataModel in
                 guard let self = self else { return }
-                self.mainView.searchButton.isEnabledCustom(self.checkDataModel(model))
+                let isChekDataModel = self.viewModel.checkDataModel(dataModel)
+                self.mainView.searchButton.isEnabledCustom(isChekDataModel)
             }.store(in: &bag)
-    }
-    
-    /// Проверка данных для включения кнопки поиска
-    func checkDataModel(_ model: CinemaListRequestDataModel) -> Bool {
-        if model.typeCinema != nil &&
-            model.typeCountry != nil &&
-            model.genre != nil &&
-            model.typeSorted != nil &&
-            model.ratingMin != nil &&
-            model.ratingMax != nil &&
-            model.yearMin != nil &&
-            model.yearMax != nil {
-            return true
-        } else {
-            return false
-        }
     }
 }

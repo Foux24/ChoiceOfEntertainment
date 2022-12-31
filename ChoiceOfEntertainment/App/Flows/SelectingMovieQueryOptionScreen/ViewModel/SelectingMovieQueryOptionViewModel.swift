@@ -72,21 +72,21 @@ private extension SelectingMovieQueryOptionViewModel {
         let valueDictionary = dictionaryParameters[selectRow]
         switch indexButton {
         case 0:
-            cinemaRequestGenerationViewController?.cinemaListDataModel.typeCinema = valueDictionary
+            cinemaRequestGenerationViewController?.viewModel.cinemaListDataModel.typeCinema = valueDictionary
         case 1:
-            cinemaRequestGenerationViewController?.cinemaListDataModel.typeCountry = valueDictionary
+            cinemaRequestGenerationViewController?.viewModel.cinemaListDataModel.typeCountry = valueDictionary
         case 2:
-            cinemaRequestGenerationViewController?.cinemaListDataModel.genre = valueDictionary
+            cinemaRequestGenerationViewController?.viewModel.cinemaListDataModel.genre = valueDictionary
         case 3:
-            cinemaRequestGenerationViewController?.cinemaListDataModel.typeSorted = valueDictionary
+            cinemaRequestGenerationViewController?.viewModel.cinemaListDataModel.typeSorted = valueDictionary
         case 4:
-            cinemaRequestGenerationViewController?.cinemaListDataModel.ratingMin = valueDictionary
+            cinemaRequestGenerationViewController?.viewModel.cinemaListDataModel.ratingMin = valueDictionary
         case 5:
-            cinemaRequestGenerationViewController?.cinemaListDataModel.ratingMax = valueDictionary
+            cinemaRequestGenerationViewController?.viewModel.cinemaListDataModel.ratingMax = valueDictionary
         case 6:
-            cinemaRequestGenerationViewController?.cinemaListDataModel.yearMin = valueDictionary
+            cinemaRequestGenerationViewController?.viewModel.cinemaListDataModel.yearMin = valueDictionary
         case 7:
-            cinemaRequestGenerationViewController?.cinemaListDataModel.yearMax = valueDictionary
+            cinemaRequestGenerationViewController?.viewModel.cinemaListDataModel.yearMax = valueDictionary
         default: break
         }
     }

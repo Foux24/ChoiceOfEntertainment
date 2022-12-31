@@ -95,7 +95,6 @@ private extension SelectingMovieQueryOptionView {
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(safeAreaLayoutGuide.snp.top)
         }
-
         pickerView.snp.makeConstraints { make in
             make.top.equalTo(clearView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()

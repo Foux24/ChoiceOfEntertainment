@@ -19,7 +19,8 @@ final class ModulesFactory: MainBuilderProtocol {
     }
     
     func buildChoiceTypeCinemaScreen() -> CinemaRequestGenerationViewController {
-        let controller = CinemaRequestGenerationViewController()
+        let viewModel = viewModelFactory.buildCinemaRequestGenerationViewModel()
+        let controller = CinemaRequestGenerationViewController(viewModel: viewModel)
         return controller
     }
     
