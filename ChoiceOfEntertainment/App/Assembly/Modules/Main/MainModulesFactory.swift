@@ -9,13 +9,23 @@ import UIKit
 
 final class ModulesFactory: MainBuilderProtocol {
     
+    var viewModelFactory: ViewModelsFactory {
+        return ViewModelsFactory()
+    }
+    
     func buildChoiceOfEntertainmentScreen() -> ChoiceOfEntertainmentViewController {
         let controller = ChoiceOfEntertainmentViewController()
         return controller
     }
     
-    func buildChoiceTypeCinemaScreen() -> ChoiceTypeCinemaViewController {
-        let controller = ChoiceTypeCinemaViewController()
+    func buildChoiceTypeCinemaScreen() -> CinemaRequestGenerationViewController {
+        let controller = CinemaRequestGenerationViewController()
+        return controller
+    }
+    
+    func buildSelectingMovieQueryOptionScreeb(_ index: Int, _ VC: CinemaRequestGenerationViewController) -> SelectingMovieQueryOptionViewController {
+        let viewModel = viewModelFactory.buildSelectingMovieQueryOptionViewModel(index, VC)
+        let controller = SelectingMovieQueryOptionViewController(viewModel: viewModel)
         return controller
     }
 }

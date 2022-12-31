@@ -39,4 +39,7 @@ extension UIColor {
     static let appBackground = UIColor(hexString: "#131718")
     static let whiteAlpha10 = UIColor(white: 1, alpha: 0.1)
     static let whiteAlpha50 = UIColor(white: 1, alpha: 0.5)
+    static let whiteAlpha15 = UIColor(white: 1, alpha: 0.15)
+    static let whiteAlpha25 = UIColor(white: 1, alpha: 0.25)
+    static let pickerViewBackground = UIColor(hexString: "#3D3F41")
 }

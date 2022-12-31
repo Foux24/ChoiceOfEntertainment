@@ -18,10 +18,10 @@ struct CinemaTypeModel: Codable {
 
 // MARK: - CinemaType
 struct CinemaType: Codable {
-    let type, cinemaTypeDescription: String
+    let typeRequest, typeDescription: String
 
     enum CodingKeys: String, CodingKey {
-        case type
-        case cinemaTypeDescription = "description"
+        case typeRequest
+        case typeDescription = "description"
     }
 }

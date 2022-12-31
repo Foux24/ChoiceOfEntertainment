@@ -14,6 +14,7 @@ final class CustomNaviHeaderView: UIView {
     
     // MARK: - Combine properties
     let onTappedBackButton = PassthroughSubject<Void, Never>()
+    let onTappedSuccesButton = PassthroughSubject<Void, Never>()
     
     // MARK: - Private Properties
     private let view = UIView()
@@ -24,7 +25,7 @@ final class CustomNaviHeaderView: UIView {
         button.setImage(UIImage(named: "chevron.backward"), for: .normal)
         return button
     }()
-
+    
     private(set) lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white

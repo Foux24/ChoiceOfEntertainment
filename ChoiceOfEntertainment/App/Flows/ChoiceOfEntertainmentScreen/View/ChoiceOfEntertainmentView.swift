@@ -26,23 +26,15 @@ final class ChoiceOfEntertainmentView: UIView {
         return label
     }()
     
-    private let cinemaButton: UIButton = {
-        let button = UIButton()
+    private let cinemaButton: AppButtonTypeOne = {
+        let button = AppButtonTypeOne()
         button.setTitle("Кино", for: .normal)
-        button.backgroundColor = .whiteAlpha10
-        button.layer.borderWidth = 0.5
-        button.layer.borderColor = UIColor.whiteAlpha50.cgColor
-        button.layer.cornerRadius = ChoiceOfEntertainmentParameters.heightButton / 2
         return button
     }()
 
-    private let bookButton: UIButton = {
-        let button = UIButton()
+    private let bookButton: AppButtonTypeOne = {
+        let button = AppButtonTypeOne()
         button.setTitle("Книгу", for: .normal)
-        button.backgroundColor = .whiteAlpha10
-        button.layer.borderWidth = 0.5
-        button.layer.borderColor = UIColor.whiteAlpha50.cgColor
-        button.layer.cornerRadius = ChoiceOfEntertainmentParameters.heightButton / 2
         return button
     }()
     
@@ -86,14 +78,10 @@ private extension ChoiceOfEntertainmentView {
         cinemaButton.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom).inset(-100)
             make.centerX.equalToSuperview()
-            make.height.equalTo(ChoiceOfEntertainmentParameters.heightButton)
-            make.width.equalTo(ChoiceOfEntertainmentParameters.widhtButton)
         }
         bookButton.snp.makeConstraints { make in
             make.top.equalTo(cinemaButton.snp.bottom).inset(-10)
             make.centerX.equalToSuperview()
-            make.height.equalTo(ChoiceOfEntertainmentParameters.heightButton)
-            make.width.equalTo(ChoiceOfEntertainmentParameters.widhtButton)
         }
     }
     

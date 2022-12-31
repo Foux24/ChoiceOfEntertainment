@@ -8,6 +8,8 @@
 import UIKit
 
 protocol MainBuilderProtocol {
+    var viewModelFactory: ViewModelsFactory { get }
     func buildChoiceOfEntertainmentScreen() -> ChoiceOfEntertainmentViewController
-    func buildChoiceTypeCinemaScreen() -> ChoiceTypeCinemaViewController
+    func buildChoiceTypeCinemaScreen() -> CinemaRequestGenerationViewController
+    func buildSelectingMovieQueryOptionScreeb(_ index: Int, _ VC: CinemaRequestGenerationViewController) -> SelectingMovieQueryOptionViewController
 }

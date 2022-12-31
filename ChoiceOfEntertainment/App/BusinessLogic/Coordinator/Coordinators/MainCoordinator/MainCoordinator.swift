@@ -66,7 +66,24 @@ private extension MainCoordinator {
             guard let self = self else { return }
             self.popModule()
         }
+        vc.openPickerViewController = { [weak self] (indexButton, viewController) in
+            guard let self = self else { return }
+            self.runSelectingMovieQueryOptionScreen(indexButton, viewController)
+        }
+        vc.nextScreen = { [weak self] dataRequest in
+            guard let self = self else { return }
+            print(dataRequest)
+        }
         router.push(vc, animated: true)
+    }
+    
+    func runSelectingMovieQueryOptionScreen(_ index: Int, _ VC: CinemaRequestGenerationViewController) {
+        let vc = factory.buildSelectingMovieQueryOptionScreeb(index, VC)
+        vc.dismiss = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss()
+        }
+        router.presentOverCurrentContext(vc, animated: true)
     }
     
     func popModule() {

@@ -18,10 +18,10 @@ struct SortedTypeModel: Codable {
 
 // MARK: - SortedType
 struct SortedType: Codable {
-    let type, sortedTypeDescription: String
+    let typeRequest, typeDescription: String
 
     enum CodingKeys: String, CodingKey {
-        case type
-        case sortedTypeDescription = "description"
+        case typeRequest
+        case typeDescription = "description"
     }
 }

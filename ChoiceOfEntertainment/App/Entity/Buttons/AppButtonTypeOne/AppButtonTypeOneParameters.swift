@@ -1,13 +1,14 @@
 //
-//  ChoiceOfEntertainmentParameters.swift
+//  AppButtonTypeOneParameters.swift
 //  ChoiceOfEntertainment
 //
-//  Created by Виталий Сухорослов on 27.12.2022.
+//  Created by Виталий Сухорослов on 29.12.2022.
 //
 
 import Foundation
 
-struct ChoiceOfEntertainmentParameters {
+struct AppButtonTypeOneParameters {
+    
     /// Widht button
     static var widhtButton: CGFloat {
         let model = Device.model

@@ -1,15 +1,15 @@
 {
     "SortedType" : [
         {
-            "type": "RATING",
+            "typeRequest": "RATING",
             "description": "По рейтингу"
         },
         {
-            "type": "NUM_VOTE",
+            "typeRequest": "NUM_VOTE",
             "description": "По колличеству голосов"
         },
         {
-            "type": "YEAR",
+            "typeRequest": "YEAR",
             "description": "По году выпуска"
         }
     ]
