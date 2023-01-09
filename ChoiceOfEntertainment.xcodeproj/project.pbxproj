@@ -55,6 +55,9 @@
 		0D8EDB1529605CC10092385A /* EnumNameFilesJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB1429605CC10092385A /* EnumNameFilesJSON.swift */; };
 		0D8EDB1829606C7C0092385A /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB1729606C7C0092385A /* Date+Ext.swift */; };
 		0D8EDB1B29609C4B0092385A /* CinemaRequestGenerationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB1A29609C4B0092385A /* CinemaRequestGenerationViewModel.swift */; };
+		0D8EDB20296C0F5D0092385A /* SelectMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB1F296C0F5D0092385A /* SelectMovieViewController.swift */; };
+		0D8EDB22296C0F880092385A /* SelectMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB21296C0F880092385A /* SelectMovieView.swift */; };
+		0D8EDB24296C10C10092385A /* SelectMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB23296C10C10092385A /* SelectMovieViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +129,9 @@
 		0D8EDB1429605CC10092385A /* EnumNameFilesJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumNameFilesJSON.swift; sourceTree = "<group>"; };
 		0D8EDB1729606C7C0092385A /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		0D8EDB1A29609C4B0092385A /* CinemaRequestGenerationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaRequestGenerationViewModel.swift; sourceTree = "<group>"; };
+		0D8EDB1F296C0F5D0092385A /* SelectMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMovieViewController.swift; sourceTree = "<group>"; };
+		0D8EDB21296C0F880092385A /* SelectMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMovieView.swift; sourceTree = "<group>"; };
+		0D8EDB23296C10C10092385A /* SelectMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMovieViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +251,7 @@
 		0D8EDA9D295B2CC80092385A /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				0D8EDB1C296C0F0B0092385A /* SelectMovieScreen */,
 				0D8EDB08295E4A310092385A /* SelectingMovieQueryOptionScreen */,
 				0D8EDAEC295B6DBB0092385A /* CinemaRequestGenerationScreen */,
 				0D8EDAA2295B2D150092385A /* ChoiceOfEntertainmentScreen */,
@@ -571,6 +578,32 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		0D8EDB1C296C0F0B0092385A /* SelectMovieScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0D8EDB1E296C0F270092385A /* ViewModel */,
+				0D8EDB1D296C0F200092385A /* View */,
+				0D8EDB1F296C0F5D0092385A /* SelectMovieViewController.swift */,
+			);
+			path = SelectMovieScreen;
+			sourceTree = "<group>";
+		};
+		0D8EDB1D296C0F200092385A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0D8EDB21296C0F880092385A /* SelectMovieView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0D8EDB1E296C0F270092385A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0D8EDB23296C10C10092385A /* SelectMovieViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -714,6 +747,7 @@
 				0D8EDB05295E2FD00092385A /* AppButtonTypeOneParameters.swift in Sources */,
 				0D8EDAF2295B6ECB0092385A /* CinemaRequestGenerationView.swift in Sources */,
 				0D8EDA6E295B2C210092385A /* ChoiceOfEntertainment.xcdatamodeld in Sources */,
+				0D8EDB20296C0F5D0092385A /* SelectMovieViewController.swift in Sources */,
 				0D8EDAF6295B80070092385A /* CustomNaviHeaderView.swift in Sources */,
 				0D8EDAA8295B2DB20092385A /* ChoiceOfEntertainmentView.swift in Sources */,
 				0D8EDAC2295B4B3C0092385A /* AppCoordinator.swift in Sources */,
@@ -726,6 +760,7 @@
 				0D8EDADC295B65DF0092385A /* Data+Ext.swift in Sources */,
 				0D8EDB13295E4FBE0092385A /* ViewModelsFactory.swift in Sources */,
 				0D8EDAAC295B39F20092385A /* UIColor+Ext.swift in Sources */,
+				0D8EDB24296C10C10092385A /* SelectMovieViewModel.swift in Sources */,
 				0D8EDB0A295E4B520092385A /* SelectingMovieQueryOptionViewController.swift in Sources */,
 				0D8EDAFF295E207B0092385A /* NameButtonsRequestGenerationViewModel.swift in Sources */,
 				0D8EDAF8295B801B0092385A /* CustomNaviHeaderViewParameters.swift in Sources */,
@@ -737,6 +772,7 @@
 				0D8EDAE1295B683C0092385A /* SortedTypeModel.swift in Sources */,
 				0D8EDACE295B4D120092385A /* MainBuilderProtocol.swift in Sources */,
 				0D8EDAE3295B685A0092385A /* CountryTypeModel.swift in Sources */,
+				0D8EDB22296C0F880092385A /* SelectMovieView.swift in Sources */,
 				0D8EDB1529605CC10092385A /* EnumNameFilesJSON.swift in Sources */,
 				0D8EDAE5295B687B0092385A /* GenreTypeModel.swift in Sources */,
 				0D8EDABD295B4A9E0092385A /* Coordinator.swift in Sources */,

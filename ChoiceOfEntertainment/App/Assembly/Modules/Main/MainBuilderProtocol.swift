@@ -12,4 +12,5 @@ protocol MainBuilderProtocol {
     func buildChoiceOfEntertainmentScreen() -> ChoiceOfEntertainmentViewController
     func buildChoiceTypeCinemaScreen() -> CinemaRequestGenerationViewController
     func buildSelectingMovieQueryOptionScreeb(_ index: Int, _ VC: CinemaRequestGenerationViewController) -> SelectingMovieQueryOptionViewController
+    func buildSelectMovieViewScreen(_ parametersRequest: CinemaListRequestDataModel) -> SelectMovieViewController
 }

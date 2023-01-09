@@ -22,4 +22,10 @@ final class ViewModelsFactory {
         let viewModel = CinemaRequestGenerationViewModel()
         return viewModel
     }
+    
+    /// Build ViewModel для экрана выбора фильма
+    func buildSelectMovieViewModel(_ parametersRequest: CinemaListRequestDataModel) -> SelectMovieViewModel {
+        let viewModel = SelectMovieViewModel(parametersRequest: parametersRequest)
+        return viewModel
+    }
 }

@@ -29,4 +29,10 @@ final class ModulesFactory: MainBuilderProtocol {
         let controller = SelectingMovieQueryOptionViewController(viewModel: viewModel)
         return controller
     }
+    
+    func buildSelectMovieViewScreen(_ parametersRequest: CinemaListRequestDataModel) -> SelectMovieViewController {
+        let viewModel = viewModelFactory.buildSelectMovieViewModel(parametersRequest)
+        let controller = SelectMovieViewController(viewModel: viewModel)
+        return controller
+    }
 }

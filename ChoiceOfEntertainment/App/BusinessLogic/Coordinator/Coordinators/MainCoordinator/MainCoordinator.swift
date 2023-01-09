@@ -70,9 +70,9 @@ private extension MainCoordinator {
             guard let self = self else { return }
             self.runSelectingMovieQueryOptionScreen(indexButton, viewController)
         }
-        vc.nextScreen = { [weak self] dataRequest in
+        vc.nextScreen = { [weak self] parametersRequest in
             guard let self = self else { return }
-            print(dataRequest)
+            self.runSelectMovieViewScreen(parametersRequest)
         }
         router.push(vc, animated: true)
     }
@@ -84,6 +84,15 @@ private extension MainCoordinator {
             self.dismiss()
         }
         router.presentOverCurrentContext(vc, animated: true)
+    }
+    
+    func runSelectMovieViewScreen(_ parametersRequest: CinemaListRequestDataModel) {
+        let vc = factory.buildSelectMovieViewScreen(parametersRequest)
+        vc.dismiss = { [weak self] in
+            guard let self = self else { return }
+            self.popModule()
+        }
+        router.push(vc, animated: true)
     }
     
     func popModule() {
