@@ -58,6 +58,14 @@
 		0D8EDB20296C0F5D0092385A /* SelectMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB1F296C0F5D0092385A /* SelectMovieViewController.swift */; };
 		0D8EDB22296C0F880092385A /* SelectMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB21296C0F880092385A /* SelectMovieView.swift */; };
 		0D8EDB24296C10C10092385A /* SelectMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB23296C10C10092385A /* SelectMovieViewModel.swift */; };
+		0D8EDB27296C1BCC0092385A /* NetworkServiceKinopoisk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB26296C1BCC0092385A /* NetworkServiceKinopoisk.swift */; };
+		0D8EDB29296C1DF20092385A /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB28296C1DF20092385A /* MovieModel.swift */; };
+		0D8EDB2C296C442C0092385A /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB2B296C442C0092385A /* APIConstants.swift */; };
+		0D8EDB2F296C49F50092385A /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB2E296C49F50092385A /* NetworkServiceError.swift */; };
+		0D8EDB32296EA2380092385A /* ProtocolsNetworkServiceKinopoisk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB31296EA2380092385A /* ProtocolsNetworkServiceKinopoisk.swift */; };
+		0D8EDB35296EAD450092385A /* SelectMovieScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB34296EAD450092385A /* SelectMovieScreenTableViewCell.swift */; };
+		0D8EDB38296EAD970092385A /* TableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB37296EAD970092385A /* TableView+Ext.swift */; };
+		0D8EDB3B296EB7520092385A /* CacheImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB3A296EB7520092385A /* CacheImageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +140,14 @@
 		0D8EDB1F296C0F5D0092385A /* SelectMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMovieViewController.swift; sourceTree = "<group>"; };
 		0D8EDB21296C0F880092385A /* SelectMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMovieView.swift; sourceTree = "<group>"; };
 		0D8EDB23296C10C10092385A /* SelectMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMovieViewModel.swift; sourceTree = "<group>"; };
+		0D8EDB26296C1BCC0092385A /* NetworkServiceKinopoisk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceKinopoisk.swift; sourceTree = "<group>"; };
+		0D8EDB28296C1DF20092385A /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		0D8EDB2B296C442C0092385A /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		0D8EDB2E296C49F50092385A /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
+		0D8EDB31296EA2380092385A /* ProtocolsNetworkServiceKinopoisk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolsNetworkServiceKinopoisk.swift; sourceTree = "<group>"; };
+		0D8EDB34296EAD450092385A /* SelectMovieScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMovieScreenTableViewCell.swift; sourceTree = "<group>"; };
+		0D8EDB37296EAD970092385A /* TableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Ext.swift"; sourceTree = "<group>"; };
+		0D8EDB3A296EB7520092385A /* CacheImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +246,8 @@
 		0D8EDA9B295B2CB80092385A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0D8EDB2D296C49D50092385A /* Errors */,
+				0D8EDB2A296C44010092385A /* APIConstants */,
 				0D8EDAB0295B40E70092385A /* Device */,
 				0D8EDAA9295B39CA0092385A /* Extension */,
 			);
@@ -281,6 +299,8 @@
 		0D8EDAA0295B2CDB0092385A /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				0D8EDB39296EB7380092385A /* CacheImageService */,
+				0D8EDB25296C1B9F0092385A /* NetworkServiceKinopoisk */,
 				0D8EDAE6295B695E0092385A /* RequestParameterConstructor */,
 				0D8EDAB3295B49FD0092385A /* Coordinator */,
 			);
@@ -316,6 +336,7 @@
 		0D8EDAA9295B39CA0092385A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				0D8EDB36296EAD750092385A /* TableView */,
 				0D8EDB1629606C720092385A /* Date */,
 				0D8EDADA295B65D10092385A /* Data */,
 				0D8EDAAA295B39D70092385A /* UIColor */,
@@ -456,6 +477,7 @@
 				0D8EDAE4295B687B0092385A /* GenreTypeModel.swift */,
 				0D8EDAFE295E207B0092385A /* NameButtonsRequestGenerationViewModel.swift */,
 				0D8EDB06295E36660092385A /* CinemaListRequestDataModel.swift */,
+				0D8EDB28296C1DF20092385A /* MovieModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -581,6 +603,7 @@
 		0D8EDB1C296C0F0B0092385A /* SelectMovieScreen */ = {
 			isa = PBXGroup;
 			children = (
+				0D8EDB33296EAD310092385A /* Cell */,
 				0D8EDB1E296C0F270092385A /* ViewModel */,
 				0D8EDB1D296C0F200092385A /* View */,
 				0D8EDB1F296C0F5D0092385A /* SelectMovieViewController.swift */,
@@ -602,6 +625,63 @@
 				0D8EDB23296C10C10092385A /* SelectMovieViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0D8EDB25296C1B9F0092385A /* NetworkServiceKinopoisk */ = {
+			isa = PBXGroup;
+			children = (
+				0D8EDB30296EA2260092385A /* Protocols */,
+				0D8EDB26296C1BCC0092385A /* NetworkServiceKinopoisk.swift */,
+			);
+			path = NetworkServiceKinopoisk;
+			sourceTree = "<group>";
+		};
+		0D8EDB2A296C44010092385A /* APIConstants */ = {
+			isa = PBXGroup;
+			children = (
+				0D8EDB2B296C442C0092385A /* APIConstants.swift */,
+			);
+			path = APIConstants;
+			sourceTree = "<group>";
+		};
+		0D8EDB2D296C49D50092385A /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				0D8EDB2E296C49F50092385A /* NetworkServiceError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		0D8EDB30296EA2260092385A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0D8EDB31296EA2380092385A /* ProtocolsNetworkServiceKinopoisk.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		0D8EDB33296EAD310092385A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0D8EDB34296EAD450092385A /* SelectMovieScreenTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0D8EDB36296EAD750092385A /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				0D8EDB37296EAD970092385A /* TableView+Ext.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		0D8EDB39296EB7380092385A /* CacheImageService */ = {
+			isa = PBXGroup;
+			children = (
+				0D8EDB3A296EB7520092385A /* CacheImageService.swift */,
+			);
+			path = CacheImageService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -754,12 +834,18 @@
 				0D8EDB1B29609C4B0092385A /* CinemaRequestGenerationViewModel.swift in Sources */,
 				0D8EDAD0295B4D650092385A /* MainModulesFactory.swift in Sources */,
 				0D8EDAE8295B697F0092385A /* RequestParameterConstructor.swift in Sources */,
+				0D8EDB2F296C49F50092385A /* NetworkServiceError.swift in Sources */,
 				0D8EDAA6295B2D400092385A /* ChoiceOfEntertainmentViewController.swift in Sources */,
 				0D8EDABF295B4B040092385A /* CoordinatorsFactory.swift in Sources */,
+				0D8EDB38296EAD970092385A /* TableView+Ext.swift in Sources */,
+				0D8EDB2C296C442C0092385A /* APIConstants.swift in Sources */,
 				0D8EDABB295B4A7A0092385A /* Presentable.swift in Sources */,
+				0D8EDB29296C1DF20092385A /* MovieModel.swift in Sources */,
 				0D8EDADC295B65DF0092385A /* Data+Ext.swift in Sources */,
 				0D8EDB13295E4FBE0092385A /* ViewModelsFactory.swift in Sources */,
 				0D8EDAAC295B39F20092385A /* UIColor+Ext.swift in Sources */,
+				0D8EDB27296C1BCC0092385A /* NetworkServiceKinopoisk.swift in Sources */,
+				0D8EDB3B296EB7520092385A /* CacheImageService.swift in Sources */,
 				0D8EDB24296C10C10092385A /* SelectMovieViewModel.swift in Sources */,
 				0D8EDB0A295E4B520092385A /* SelectingMovieQueryOptionViewController.swift in Sources */,
 				0D8EDAFF295E207B0092385A /* NameButtonsRequestGenerationViewModel.swift in Sources */,
@@ -778,12 +864,14 @@
 				0D8EDABD295B4A9E0092385A /* Coordinator.swift in Sources */,
 				0D8EDB02295E2F5D0092385A /* AppButtonTypeOne.swift in Sources */,
 				0D8EDA64295B2C210092385A /* AppDelegate.swift in Sources */,
+				0D8EDB35296EAD450092385A /* SelectMovieScreenTableViewCell.swift in Sources */,
 				0D8EDB1829606C7C0092385A /* Date+Ext.swift in Sources */,
 				0D8EDA66295B2C210092385A /* SceneDelegate.swift in Sources */,
 				0D8EDADF295B67C10092385A /* CinemaTypeModel.swift in Sources */,
 				0D8EDB0D295E4B600092385A /* SelectingMovieQueryOptionView.swift in Sources */,
 				0D8EDAC5295B4B720092385A /* BaseCoordinator.swift in Sources */,
 				0D8EDAB9295B4A640092385A /* Routable.swift in Sources */,
+				0D8EDB32296EA2380092385A /* ProtocolsNetworkServiceKinopoisk.swift in Sources */,
 				0D8EDAB2295B40F50092385A /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

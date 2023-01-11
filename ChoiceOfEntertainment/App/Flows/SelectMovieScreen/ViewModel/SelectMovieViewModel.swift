@@ -8,42 +8,68 @@
 import UIKit
 import Combine
 
+// MARK: - SelectMovieViewModel
 final class SelectMovieViewModel {
     
     // MARK: - Public property
+    let countSection: Int = 1
+    var listMovie = [MovieItem]()
+    var cacheImageService: CacheImageService?
+    var isLoading: Bool = false
+    
     // input
     @Published var parametersRequest: CinemaListRequestDataModel
+    @Published var numberPage: Int = 1
     // output
-    @Published var listMovie = [String]()
+    @Published var movieModel = MovieModel(total: nil, totalPages: nil, items: [])
     
     // MARK: - Private property
     private var bag = Set<AnyCancellable>()
+    private let networkService: ProtocolFetchListMovie = NetworkServiceKinopoisk()
     
+    // MARK: - Init
     init(parametersRequest: CinemaListRequestDataModel) {
         self.parametersRequest = parametersRequest
-        requestListMovies()
+        fetchListMovies()
+    }
+    
+    /// Получение списка жанров в одной строке
+    func fetchListGengre(genres: [Genre]) -> String {
+        var stringGenre: String = ""
+        genres.forEach { genre in
+            stringGenre += " \(genre.genre),"
+        }
+        stringGenre.removeFirst()
+        stringGenre.removeLast()
+        return stringGenre
+    }
+    
+    /// Подгрузка новых фильмов в конец списка
+    func loadMovies(indexPaths: [IndexPath]) -> Void {
+        guard let maxRows = indexPaths.map({$0.row}).max() else { return }
+        guard let totalPages = movieModel.totalPages else { return }
+        let nextPage = numberPage + 1
+        if maxRows > listMovie.count - 10, !isLoading && numberPage < totalPages {
+            numberPage = nextPage
+        }
     }
 }
 
 // MARK: - Private
 private extension SelectMovieViewModel {
-    func requestListMovies() {
-        $parametersRequest
-        fetchNonOptionalsParameters(parametersRequest) { typeCinema, typeCountry, genre, typeSorted, ratingMin, ratingMax, yearMin, yearMax in
-            print(typeCinema, typeCountry, genre, typeSorted, ratingMin, ratingMax, yearMin, yearMax)
-        }
-    }
     
-    func fetchNonOptionalsParameters(_ parameters: CinemaListRequestDataModel, completion: @escaping (_ typeCinema: String, _ typeCountry: String, _ genre: String, _ typeSorted: String, _ ratingMin: String, _ ratingMax: String, _ yearMin: String, _ yearMax: String) -> Void) {
-        guard let typeCinema = parameters.typeCinema,
-              let typeCountry = parameters.typeCountry,
-              let genre = parameters.genre,
-              let typeSorted = parameters.typeSorted,
-              let ratingMin = parameters.ratingMin,
-              let ratingMax = parameters.ratingMax,
-              let yearMin = parameters.yearMin,
-              let yearMax = parameters.yearMax
-        else { return }
-        completion(typeCinema, typeCountry, genre, typeSorted, ratingMin, ratingMax, yearMin, yearMax)
+    /// Получение списка фильмов
+    func fetchListMovies() {
+        Publishers.CombineLatest( $parametersRequest, $numberPage)
+            .flatMap { (parametersRequest, numberPage) -> AnyPublisher<MovieModel, Never> in
+                self.isLoading = true
+                return self.networkService.fetchListMovies(
+                    from: Endpoint(
+                        index: 0,
+                        parameter: parametersRequest,
+                        numberPage: numberPage)!)
+            }
+            .assign(to: \.movieModel, on: self)
+            .store(in: &self.bag)
     }
 }

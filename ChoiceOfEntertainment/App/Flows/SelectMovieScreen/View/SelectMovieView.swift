@@ -16,6 +16,15 @@ final class SelectMovieView: UIView {
         return view
     }()
     
+    private(set) lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.backgroundColor = .clear
+        tableView.sectionFooterHeight = 0
+        tableView.sectionHeaderHeight = 0
+        tableView.rowHeight = 120
+        return tableView
+    }()
+    
     // MARK: - Init
     /// - Parameter frame: frame
     override init(frame: CGRect) {
@@ -43,12 +52,17 @@ private extension SelectMovieView {
     /// Добавление UI на View
     func addUIInView() -> Void {
         addSubview(headerView)
+        addSubview(tableView)
     }
     
     /// Установка констрейнтов
     func setupConstreints() -> Void {
         headerView.snp.makeConstraints { make in
             make.leading.top.trailing.equalToSuperview()
+        }
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(headerView.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 }
