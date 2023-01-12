@@ -25,6 +25,8 @@ final class SelectMovieView: UIView {
         return tableView
     }()
     
+    private(set) lazy var loadView = CustomLoadView()
+    
     // MARK: - Init
     /// - Parameter frame: frame
     override init(frame: CGRect) {
@@ -53,6 +55,7 @@ private extension SelectMovieView {
     func addUIInView() -> Void {
         addSubview(headerView)
         addSubview(tableView)
+        addSubview(loadView)
     }
     
     /// Установка констрейнтов
@@ -63,6 +66,9 @@ private extension SelectMovieView {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(headerView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
+        }
+        loadView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
     }
 }

@@ -42,6 +42,7 @@ final class SelectMovieViewController: UIViewController {
         setupTableView()
         transitionTableViewInCashService()
         binding()
+        mainView.loadView.startLoadView()
     }
 }
 
@@ -115,8 +116,13 @@ private extension SelectMovieViewController {
         viewModel.$movieModel
             .sink { [weak self] movieModel in
                 guard let self = self else { return }
-                self.viewModel.listMovie.append(contentsOf: movieModel.items)
-                self.mainView.tableView.reloadData()
+                if movieModel.items.count > 0 {
+                    self.mainView.loadView.stopLoadView()
+                    self.viewModel.listMovie.append(contentsOf: movieModel.items)
+                    self.mainView.tableView.reloadData()
+                } else {
+                    self.mainView.loadView.errorLoadView()
+                }
                 self.viewModel.isLoading = false
             }.store(in: &bag)
     }

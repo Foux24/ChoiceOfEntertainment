@@ -66,6 +66,7 @@
 		0D8EDB35296EAD450092385A /* SelectMovieScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB34296EAD450092385A /* SelectMovieScreenTableViewCell.swift */; };
 		0D8EDB38296EAD970092385A /* TableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB37296EAD970092385A /* TableView+Ext.swift */; };
 		0D8EDB3B296EB7520092385A /* CacheImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB3A296EB7520092385A /* CacheImageService.swift */; };
+		0D8EDB3E297015710092385A /* CustomLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8EDB3D297015710092385A /* CustomLoadView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		0D8EDB34296EAD450092385A /* SelectMovieScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMovieScreenTableViewCell.swift; sourceTree = "<group>"; };
 		0D8EDB37296EAD970092385A /* TableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Ext.swift"; sourceTree = "<group>"; };
 		0D8EDB3A296EB7520092385A /* CacheImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageService.swift; sourceTree = "<group>"; };
+		0D8EDB3D297015710092385A /* CustomLoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -511,6 +513,7 @@
 		0D8EDAF3295B7F350092385A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0D8EDB3C2970155A0092385A /* CustomLoadView */,
 				0D8EDAF4295B7FAC0092385A /* CustomNaviHeaderView */,
 			);
 			path = Views;
@@ -684,6 +687,14 @@
 			path = CacheImageService;
 			sourceTree = "<group>";
 		};
+		0D8EDB3C2970155A0092385A /* CustomLoadView */ = {
+			isa = PBXGroup;
+			children = (
+				0D8EDB3D297015710092385A /* CustomLoadView.swift */,
+			);
+			path = CustomLoadView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -825,6 +836,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D8EDB05295E2FD00092385A /* AppButtonTypeOneParameters.swift in Sources */,
+				0D8EDB3E297015710092385A /* CustomLoadView.swift in Sources */,
 				0D8EDAF2295B6ECB0092385A /* CinemaRequestGenerationView.swift in Sources */,
 				0D8EDA6E295B2C210092385A /* ChoiceOfEntertainment.xcdatamodeld in Sources */,
 				0D8EDB20296C0F5D0092385A /* SelectMovieViewController.swift in Sources */,
