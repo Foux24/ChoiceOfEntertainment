@@ -28,4 +28,16 @@ final class ViewModelsFactory {
         let viewModel = SelectMovieViewModel(parametersRequest: parametersRequest)
         return viewModel
     }
+    
+    /// Build ViewModel для экрана описания фильма фильма
+    func buildDescriptionMovieViewModel(_ kinopoiskID: Int) -> DescriptionMovieViewModel {
+        let viewModel = DescriptionMovieViewModel(kinopoiskID: kinopoiskID)
+        return viewModel
+    }
+    
+    /// Build ViewModel для экрана с последними 5-ю поисками
+    func buildLastFiveSearchesViewModel() -> LastFiveSearchesViewModel {
+        let viewModel = LastFiveSearchesViewModel()
+        return viewModel
+    }
 }

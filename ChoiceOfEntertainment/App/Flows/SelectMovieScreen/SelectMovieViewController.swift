@@ -14,6 +14,7 @@ final class SelectMovieViewController: UIViewController {
     // MARK: Public properties
     var dismiss: CompletionBlock?
     var viewModel: SelectMovieViewModel
+    var onDescriptionMovie: ((Int) -> ())?
     
     // MARK: - Private properties
     private var bag = Set<AnyCancellable>()
@@ -61,7 +62,7 @@ extension SelectMovieViewController: UITableViewDataSource {
         let movie = viewModel.listMovie[indexPath.row]
         let image = viewModel.cacheImageService?.photo(atIndexPath: indexPath, byUrl: movie.posterURLPreview ?? "")
         cell.configurationCell(
-            nameMovie: movie.nameRu ?? "noName",
+            nameMovie: viewModel.fetchNameMovies.fetchNameMovie(movie.nameRu, movie.nameEn, movie.nameOriginal),
             image: image,
             genre: viewModel.fetchListGengre(genres: movie.genres),
             year: String(movie.year ?? 1980),
@@ -79,6 +80,8 @@ extension SelectMovieViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         mainView.tableView.deselectRow(at: indexPath, animated: true)
+        guard let kinopoiskID = viewModel.listMovie[indexPath.row].kinopoiskID else { return }
+        onDescriptionMovie?(kinopoiskID)
     }
 }
 

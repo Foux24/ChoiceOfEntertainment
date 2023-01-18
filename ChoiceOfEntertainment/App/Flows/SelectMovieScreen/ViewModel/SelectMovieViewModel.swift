@@ -16,6 +16,7 @@ final class SelectMovieViewModel {
     var listMovie = [MovieItem]()
     var cacheImageService: CacheImageService?
     var isLoading: Bool = false
+    var fetchNameMovies: ProtocolFetchNameMovies = FetchNameMovies()
     
     // input
     @Published var parametersRequest: CinemaListRequestDataModel
@@ -41,7 +42,7 @@ final class SelectMovieViewModel {
         }
         stringGenre.removeFirst()
         stringGenre.removeLast()
-        return stringGenre
+        return stringGenre.capitalized
     }
     
     /// Подгрузка новых фильмов в конец списка

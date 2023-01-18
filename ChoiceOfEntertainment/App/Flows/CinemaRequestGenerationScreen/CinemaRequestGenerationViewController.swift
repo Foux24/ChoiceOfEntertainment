@@ -15,6 +15,7 @@ final class CinemaRequestGenerationViewController: UIViewController {
 
     // MARK: Public properties
     var dismiss: CompletionBlock?
+    var moreButton: CompletionBlock?
     var nextScreen: ((CinemaListRequestDataModel) -> ())?
     var openPickerViewController: ((Int, CinemaRequestGenerationViewController) -> ())?
     
@@ -59,16 +60,27 @@ private extension CinemaRequestGenerationViewController {
                 guard let self = self else { return }
                 self.dismiss?()
             }.store(in: &bag)
+        
+        mainView.headerView.onTappedMoreButton
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.moreButton?()
+            }.store(in: &bag)
+        
         mainView.onTappedButton
             .sink { [weak self] dataButton in
                 guard let self = self else { return }
                 self.openPickerViewController?(dataButton.indexButton, self)
             }.store(in: &bag)
+        
         mainView.onTappedSearchButton
             .sink { [weak self] _ in
                 guard let self = self else { return }
+                let coreData = CoreDataManager.instance
+                coreData.createListPropertiesRequestCD(properties: self.viewModel.cinemaListDataModel)
                 self.nextScreen?(self.viewModel.cinemaListDataModel)
             }.store(in: &bag)
+        
         viewModel.$cinemaListDataModel
             .sink { [weak self] dataModel in
                 guard let self = self else { return }

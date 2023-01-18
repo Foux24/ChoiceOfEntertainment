@@ -20,6 +20,8 @@ final class CinemaRequestGenerationView: UIView {
     private(set) lazy var headerView: CustomNaviHeaderView = {
         let view = CustomNaviHeaderView()
         view.titleLabel.text = "Кино"
+        view.moreButton.setImage(UIImage(named: "magnifyingglass"), for: .normal)
+        view.moreButton.isHidden = false
         return view
     }()
     

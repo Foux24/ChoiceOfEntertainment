@@ -11,3 +11,7 @@ import Combine
 protocol ProtocolFetchListMovie {
     func fetchListMovies(from endpoint: Endpoint) -> AnyPublisher<MovieModel, Never>
 }
+
+protocol ProtocolFetchDescriptionMovie {
+    func fetchDescriptionMovie(from endpoint: Endpoint) -> AnyPublisher<DescriptionMovieModel, Never>
+}

@@ -35,4 +35,16 @@ final class ModulesFactory: MainBuilderProtocol {
         let controller = SelectMovieViewController(viewModel: viewModel)
         return controller
     }
+    
+    func buildDescriptionMovieScreen(_ kinopoiskID: Int) -> DescriptionMovieViewController {
+        let viewModel = viewModelFactory.buildDescriptionMovieViewModel(kinopoiskID)
+        let controller = DescriptionMovieViewController(viewModel: viewModel)
+        return controller
+    }
+    
+    func buildLastFiveSearchesScreen() -> LastFiveSearchesViewController {
+        let viewModel = viewModelFactory.buildLastFiveSearchesViewModel()
+        let controller = LastFiveSearchesViewController(viewModel: viewModel)
+        return controller
+    }
 }

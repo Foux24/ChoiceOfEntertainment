@@ -41,6 +41,9 @@ extension UIColor {
     static let whiteAlpha50 = UIColor(white: 1, alpha: 0.5)
     static let whiteAlpha15 = UIColor(white: 1, alpha: 0.15)
     static let whiteAlpha25 = UIColor(white: 1, alpha: 0.25)
+    static let whiteAlpha70 = UIColor(white: 1, alpha: 0.7)
+    static let blackAlpha70 = UIColor(hexString: "#000000", alpha: 0.7)
     static let pickerViewBackground = UIColor(hexString: "#3D3F41")
+    static let lastFiveSearchViewBackground = UIColor(hexString: "#3D3F41")
     static let loadViewBackground = UIColor(hexString: "#222424")
 }

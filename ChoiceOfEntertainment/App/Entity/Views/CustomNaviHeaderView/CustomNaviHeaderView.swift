@@ -14,7 +14,7 @@ final class CustomNaviHeaderView: UIView {
     
     // MARK: - Combine properties
     let onTappedBackButton = PassthroughSubject<Void, Never>()
-    let onTappedSuccesButton = PassthroughSubject<Void, Never>()
+    let onTappedMoreButton = PassthroughSubject<Void, Never>()
     
     // MARK: - Private Properties
     private let view = UIView()
@@ -23,6 +23,14 @@ final class CustomNaviHeaderView: UIView {
         let button = UIButton()
         button.tintColor = .white
         button.setImage(UIImage(named: "chevron.backward"), for: .normal)
+        return button
+    }()
+    
+    private(set) lazy var moreButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .white
+        button.setImage(UIImage(named: "ellipsis"), for: .normal)
+        button.isHidden = true
         return button
     }()
     
@@ -60,6 +68,7 @@ private extension CustomNaviHeaderView {
     func addUIInView() -> Void {
         addSubview(view)
         addSubview(backButton)
+        addSubview(moreButton)
         addSubview(titleLabel)
     }
     
@@ -73,6 +82,10 @@ private extension CustomNaviHeaderView {
             make.leading.bottom.equalToSuperview().inset(10)
             make.height.width.equalTo(CustomNaviHeaderViewParameters.heightAndWidhtBackButton)
         }
+        moreButton.snp.makeConstraints { make in
+            make.trailing.bottom.equalToSuperview().inset(10)
+            make.height.width.equalTo(CustomNaviHeaderViewParameters.heightAndWidhtBackButton)
+        }
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(20)
@@ -82,10 +95,16 @@ private extension CustomNaviHeaderView {
     /// Добавление таргетов кнопкам
     func addTargetsButtons() {
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
     }
     
     @objc
     func backButtonTapped() {
         onTappedBackButton.send()
+    }
+    
+    @objc
+    func moreButtonTapped() {
+        onTappedMoreButton.send()
     }
 }

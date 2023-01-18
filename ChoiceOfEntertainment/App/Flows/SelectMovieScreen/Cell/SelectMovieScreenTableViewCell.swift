@@ -24,28 +24,32 @@ final class SelectMovieScreenTableViewCell: UITableViewCell {
         label.textColor = .white
         label.textAlignment = .left
         label.numberOfLines = 2
+        label.font = .preferredFont(forTextStyle: .body, compatibleWith: .current)
         return label
     }()
     
     private let genres: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = .whiteAlpha70
         label.textAlignment = .left
         label.numberOfLines = 2
+        label.font = .preferredFont(forTextStyle: .caption1, compatibleWith: .current)
         return label
     }()
     
     private let year: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = .whiteAlpha70
         label.textAlignment = .left
+        label.font = .preferredFont(forTextStyle: .caption2, compatibleWith: .current)
         return label
     }()
     
     private let rating: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = .whiteAlpha70
         label.textAlignment = .left
+        label.font = .preferredFont(forTextStyle: .caption2, compatibleWith: .current)
         return label
     }()
     
@@ -59,8 +63,8 @@ final class SelectMovieScreenTableViewCell: UITableViewCell {
             self.nameMovie.text = nameMovie
             self.previewImage.image = image ?? UIImage(named: "noPoster")
             self.genres.text = genre
-            self.year.text = "Год - \(year)"
-            self.rating.text = "Рейтинг - \(rating)"
+            self.year.text = year
+            self.rating.text = "⭐️ - \(rating)"
             setupCell()
             addUIInView()
             setupConstreints()

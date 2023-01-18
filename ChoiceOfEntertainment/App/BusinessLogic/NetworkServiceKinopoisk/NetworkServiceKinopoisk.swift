@@ -12,6 +12,7 @@ import Combine
 enum Endpoint {
     
     case searchMovieFilters(_ parameter: CinemaListRequestDataModel, _ numberPage: String)
+    case descriptionMovie(_ kinopoiskID: String)
     
     var baseURL:URL {URL(string: "https://kinopoiskapiunofficial.tech/api/v2.2/")!}
     
@@ -20,6 +21,8 @@ enum Endpoint {
         switch self {
         case .searchMovieFilters:
             return "films"
+        case .descriptionMovie(let kinopoiskID):
+            return "films/\(kinopoiskID)"
         }
     }
     
@@ -41,6 +44,7 @@ enum Endpoint {
                                         URLQueryItem(name: "yearTo", value: parameter.yearMax),
                                         URLQueryItem(name: "page", value: numberPage),
             ]
+        case .descriptionMovie(_): break
         }
         
         var request = URLRequest(url: urlComponents.url!)
@@ -51,27 +55,41 @@ enum Endpoint {
     }
     
     // MARK: - Init
-    init? (index: Int, parameter: CinemaListRequestDataModel = CinemaListRequestDataModel(), numberPage: Int = 1) {
+    init? (index: Int, parameter: CinemaListRequestDataModel = CinemaListRequestDataModel(), numberPage: Int = 1, kinopoiskID: Int = 1) {
         switch index {
         case 0: self = .searchMovieFilters(parameter, String(numberPage))
+        case 1: self = .descriptionMovie(String(kinopoiskID))
         default: return nil
         }
     }
 }
 
 // MARK: - NetworkServiceKinopoisk
-final class NetworkServiceKinopoisk: ProtocolFetchListMovie {
+final class NetworkServiceKinopoisk: ProtocolFetchListMovie, ProtocolFetchDescriptionMovie {
     
     /// Получение списка фильмов
     func fetchListMovies(from endpoint: Endpoint) -> AnyPublisher<MovieModel, Never> {
-        let nilModel = MovieModel(total: nil, totalPages: nil, items: [])
+        let placeholder = MovieModel.placeholder
         guard let url = endpoint.absoluteURL else {
-            return Just(nilModel).eraseToAnyPublisher()
+            return Just(placeholder).eraseToAnyPublisher()
         }
         return fetch(url)
             .map { (response: MovieModel) -> MovieModel in
                 return response }
-            .replaceError(with: nilModel)
+            .replaceError(with: placeholder)
+            .eraseToAnyPublisher()
+    }
+    
+    /// Получение описания фильма
+    func fetchDescriptionMovie(from endpoint: Endpoint) -> AnyPublisher<DescriptionMovieModel, Never> {
+        let placeholder = DescriptionMovieModel.placeholder
+        guard let url = endpoint.absoluteURL else {
+            return Just(placeholder).eraseToAnyPublisher()
+        }
+        return fetch(url)
+            .map { (response: DescriptionMovieModel) -> DescriptionMovieModel in
+                return response }
+            .replaceError(with: placeholder)
             .eraseToAnyPublisher()
     }
 }

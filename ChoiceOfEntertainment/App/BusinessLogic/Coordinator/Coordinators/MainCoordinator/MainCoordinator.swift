@@ -66,6 +66,10 @@ private extension MainCoordinator {
             guard let self = self else { return }
             self.popModule()
         }
+        vc.moreButton = { [weak self] in
+            guard let self = self else { return }
+            self.runLastFiveSearchesScreen()
+        }
         vc.openPickerViewController = { [weak self] (indexButton, viewController) in
             guard let self = self else { return }
             self.runSelectingMovieQueryOptionScreen(indexButton, viewController)
@@ -92,7 +96,33 @@ private extension MainCoordinator {
             guard let self = self else { return }
             self.popModule()
         }
+        vc.onDescriptionMovie = { [weak self] kinopoiskID in
+            guard let self = self else { return }
+            self.runDescriptionMovieScreen(kinopoiskID)
+        }
         router.push(vc, animated: true)
+    }
+    
+    func runDescriptionMovieScreen(_ kinopoiskID: Int) {
+        let vc = factory.buildDescriptionMovieScreen(kinopoiskID)
+        vc.dismiss = { [weak self] in
+            guard let self = self else { return }
+            self.popModule()
+        }
+        router.push(vc, animated: true)
+    }
+    
+    func runLastFiveSearchesScreen() {
+        let vc = factory.buildLastFiveSearchesScreen()
+        vc.dismiss = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss()
+        }
+        vc.nextScreen = { [weak self] parametersRequest in
+            guard let self = self else { return }
+            self.runSelectMovieViewScreen(parametersRequest)
+        }
+        router.presentOverCurrentContext(vc, animated: true)
     }
     
     func popModule() {
