@@ -77,7 +77,8 @@ final class LastFiveSearchesView: UIView {
     
     private let magnifying: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "magnifyingglass")
+        view.image = UIImage(systemName: "magnifyingglass")
+        view.tintColor = .white
         view.layer.opacity = 0.1
         return view
     }()
@@ -149,7 +150,7 @@ private extension LastFiveSearchesView {
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(10)
         }
         demarcationLine.snp.makeConstraints { make in
-            make.top.equalTo(cancleButton.snp.bottom)
+            make.top.equalTo(cancleButton.snp.bottom).inset(-5)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(1)
         }

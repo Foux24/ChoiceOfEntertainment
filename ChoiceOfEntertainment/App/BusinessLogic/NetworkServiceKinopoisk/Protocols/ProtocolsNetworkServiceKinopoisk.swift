@@ -12,6 +12,7 @@ protocol ProtocolFetchListMovie {
     func fetchListMovies(from endpoint: Endpoint) -> AnyPublisher<MovieModel, Never>
 }
 
-protocol ProtocolFetchDescriptionMovie {
+protocol ProtocolFetchDataMovie {
     func fetchDescriptionMovie(from endpoint: Endpoint) -> AnyPublisher<DescriptionMovieModel, Never>
+    func fetchListShotsMovie(from endpoint: Endpoint) -> AnyPublisher<[URLsShotsFilmModel], Never>
 }

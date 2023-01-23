@@ -22,14 +22,14 @@ final class CustomNaviHeaderView: UIView {
     private let backButton: UIButton = {
         let button = UIButton()
         button.tintColor = .white
-        button.setImage(UIImage(named: "chevron.backward"), for: .normal)
+        button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         return button
     }()
     
     private(set) lazy var moreButton: UIButton = {
         let button = UIButton()
         button.tintColor = .white
-        button.setImage(UIImage(named: "ellipsis"), for: .normal)
+        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
         button.isHidden = true
         return button
     }()

@@ -18,15 +18,15 @@ final class CacheImageService {
     private let cacheLifeTime: TimeInterval = 30 * 24 * 60 * 60
     private var images = [String: UIImage]()
     private let container: DataReloadable
-    
+
     init(container: UITableView) {
         self.container = Table(table: container)
     }
-    
+
     init(container: UICollectionView) {
         self.container = Collection(collection: container)
     }
-    
+
     private static let pathName: String = {
         let pathName = "images"
         guard let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {return pathName}
@@ -36,7 +36,7 @@ final class CacheImageService {
         }
         return pathName
     }()
-    
+
     /// Метод предоставления изображения по переданному урлу
     func photo(atIndexPath indexPath: IndexPath, byUrl url: String) -> UIImage? {
         var image: UIImage?
@@ -53,21 +53,18 @@ final class CacheImageService {
 
 // MARK: - Private
 private extension CacheImageService {
-    
+
     class Table: DataReloadable {
-        /// сылка на таблицу
         let table: UITableView
-        /// инициализтор
         init(table: UITableView) {
             self.table = table
         }
-        /// Метод для ребута строки в таблице
+
         func reloadRow(atIndexPath indexPath: IndexPath) {
             table.reloadRows(at: [indexPath], with: .none)
         }
     }
-    
-    /// Аналогично више представленному варианту, только обновляем итем в коллекции а не строку
+
     class Collection: DataReloadable {
         let collection: UICollectionView
         init(collection: UICollectionView) {
@@ -77,7 +74,7 @@ private extension CacheImageService {
             collection.reloadItems(at: [indexPath])
         }
     }
-    
+
     /// Метод загрузки изображения из файловой системы
     func getImageFromCache(url: String) -> UIImage? {
         guard
@@ -85,8 +82,6 @@ private extension CacheImageService {
             let info = try? FileManager.default.attributesOfItem(atPath: fileName),
             let modificationDate = info[FileAttributeKey.modificationDate] as? Date
         else { return nil }
-        
-        /// Смотрим дату создания файла в системе
         let lifeTime = Date().timeIntervalSince(modificationDate)
         guard
             lifeTime <= cacheLifeTime,
@@ -96,17 +91,17 @@ private extension CacheImageService {
         }
         return image
     }
-    
+
     /// Метод конфигурации пути к файлу
     func getFilePath(url: String) -> String? {
         guard let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {return nil}
-        let hashName = url.split(separator: "/").last ?? "default"
+        let hashName = url
         return cachesDirectory.appendingPathComponent(CacheImageService.pathName + "/" + hashName).path
     }
-    
+
     /// Метод загрузки изображения из сети по переданному адресу
     func loadPhoto(atIndexPath indexPath: IndexPath, byUrl url: String) {
-        
+
         guard let urlImage = URL(string: url) else { return }
         URLSession.shared.dataTask(with: urlImage) { [weak self] (data, response, error) in
             guard let data = data else { return }
@@ -119,9 +114,9 @@ private extension CacheImageService {
                 self?.container.reloadRow(atIndexPath: indexPath)
             }
         }.resume()
-        
+
     }
-    
+
     /// Метод для сохранения изображения в файловой системе
     func saveImageToCache(url: String, image: UIImage) {
         guard let fileName = getFilePath(url: url),

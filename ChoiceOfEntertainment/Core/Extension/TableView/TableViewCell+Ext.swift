@@ -1,5 +1,5 @@
 //
-//  TableView+Ext.swift
+//  TableViewCell+Ext.swift
 //  ChoiceOfEntertainment
 //
 //  Created by Виталий Сухорослов on 11.01.2023.
@@ -10,19 +10,15 @@ import UIKit
 /// Протокол Reusable
 protocol Reusable{}
 
-/// Extension UITableViewCell on the Reusable
 extension UITableViewCell: Reusable {}
 
-/// extension Reusable on the UITableViewCell
 extension Reusable where Self: UITableViewCell {
     
-    /// reuseID
     static var reuseID: String {
         return String(describing: self)
     }
 }
 
-/// Extension UITableView
 extension UITableView {
     
     /// Регистрация чейки

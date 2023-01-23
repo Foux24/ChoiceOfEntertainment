@@ -52,10 +52,24 @@ final class DescriptionMovieView: UIView {
         return label
     }()
     
+    private(set) lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: createLayoutCollection())
+        collection.backgroundColor = .clear
+        collection.isPagingEnabled = false
+        return collection
+    }()
+    
     func configurationView(posterImageURL: String, nameMovie: String, description: String) {
         posterImageView.loadImage(posterImageURL)
         self.nameMovie.text = nameMovie
         descriptionMovie.text = description
+    }
+    
+    // FIXME: - Сделать логику отображения коллекции если итемов в ней ноль
+    func reloadCollectionView(_ countItem: Int) {
+        collectionView.reloadData()
     }
     
     // MARK: - Init
@@ -90,6 +104,7 @@ private extension DescriptionMovieView {
         addSubview(scrollView)
         scrollView.addSubview(nameMovie)
         scrollView.addSubview(descriptionMovie)
+        scrollView.addSubview(collectionView)
     }
     
     /// Установка констрейнтов
@@ -116,9 +131,45 @@ private extension DescriptionMovieView {
         }
         descriptionMovie.snp.makeConstraints { make in
             make.top.equalTo(nameMovie.snp.bottom).inset(-10)
+            make.leading.equalTo(self.snp.leading).inset(10)
+            make.trailing.equalTo(self.snp.trailing).inset(10)
+        }
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(descriptionMovie.snp.bottom).inset(-5)
             make.leading.equalTo(self.snp.leading)
             make.trailing.equalTo(self.snp.trailing)
+            make.height.equalTo(142)
             make.bottom.equalToSuperview()
         }
+    }
+    
+    /// Настроим композицию элементов в коллекции
+    func createLayoutCollection() -> UICollectionViewLayout {
+        var widhtGroup: CGFloat {
+            let model = Device.model
+            switch model {
+            case .iphoneSE: return 1.14
+            default: return 0.885
+            }
+        }
+        let spacing: CGFloat = 5
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(180),
+            heightDimension: .absolute(132))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(widhtGroup),
+            heightDimension: .absolute(132))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.interItemSpacing = .fixed(spacing)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: spacing, leading: spacing, bottom: spacing, trailing: spacing)
+        section.interGroupSpacing = spacing
+        section.orthogonalScrollingBehavior = .continuous
+
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }
 }

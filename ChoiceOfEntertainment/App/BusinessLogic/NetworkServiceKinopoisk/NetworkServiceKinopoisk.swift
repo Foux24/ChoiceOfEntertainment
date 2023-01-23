@@ -13,6 +13,7 @@ enum Endpoint {
     
     case searchMovieFilters(_ parameter: CinemaListRequestDataModel, _ numberPage: String)
     case descriptionMovie(_ kinopoiskID: String)
+    case shotsMovie(_ kinopoiskID: String, _ numberPage: String)
     
     var baseURL:URL {URL(string: "https://kinopoiskapiunofficial.tech/api/v2.2/")!}
     
@@ -23,6 +24,8 @@ enum Endpoint {
             return "films"
         case .descriptionMovie(let kinopoiskID):
             return "films/\(kinopoiskID)"
+        case .shotsMovie(let kinopoiskID, _):
+            return "films/\(kinopoiskID)/images"
         }
     }
     
@@ -45,6 +48,10 @@ enum Endpoint {
                                         URLQueryItem(name: "page", value: numberPage),
             ]
         case .descriptionMovie(_): break
+        case .shotsMovie(_, let numberPage):
+            urlComponents.queryItems = [URLQueryItem(name: "type", value: "STILL"),
+                                        URLQueryItem(name: "page", value: numberPage)
+            ]
         }
         
         var request = URLRequest(url: urlComponents.url!)
@@ -59,13 +66,14 @@ enum Endpoint {
         switch index {
         case 0: self = .searchMovieFilters(parameter, String(numberPage))
         case 1: self = .descriptionMovie(String(kinopoiskID))
+        case 2: self = .shotsMovie(String(kinopoiskID), String(numberPage))
         default: return nil
         }
     }
 }
 
 // MARK: - NetworkServiceKinopoisk
-final class NetworkServiceKinopoisk: ProtocolFetchListMovie, ProtocolFetchDescriptionMovie {
+final class NetworkServiceKinopoisk: ProtocolFetchListMovie, ProtocolFetchDataMovie {
     
     /// Получение списка фильмов
     func fetchListMovies(from endpoint: Endpoint) -> AnyPublisher<MovieModel, Never> {
@@ -90,6 +98,18 @@ final class NetworkServiceKinopoisk: ProtocolFetchListMovie, ProtocolFetchDescri
             .map { (response: DescriptionMovieModel) -> DescriptionMovieModel in
                 return response }
             .replaceError(with: placeholder)
+            .eraseToAnyPublisher()
+    }
+    
+    /// Получение списка кадров к фильму
+    func fetchListShotsMovie(from endpoint: Endpoint) -> AnyPublisher<[URLsShotsFilmModel], Never> {
+        guard let url = endpoint.absoluteURL else {
+            return Just([URLsShotsFilmModel]()).eraseToAnyPublisher()
+        }
+        return fetch(url)
+            .map { (response: ListURLsShotsFilmModel) -> [URLsShotsFilmModel] in
+                return response.items }
+            .replaceError(with: [URLsShotsFilmModel]())
             .eraseToAnyPublisher()
     }
 }
